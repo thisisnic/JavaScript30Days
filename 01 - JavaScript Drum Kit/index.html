@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 
+
+Topics:
+	* key events
+	* audio events
+	* the transition end event
+
+-->
+  <div class="keys">
+  
+  <!-- Each key has a code which is associated with it.  You can go to keycode.info to find out the keycode associated with a keypress.  -->
+     <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">clap</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">hihat</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">kick</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">openhat</span>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <span class="sound">boom</span>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <span class="sound">ride</span>
+    </div>
+    <div data-key="74" class="key">
+      <kbd>J</kbd>
+      <span class="sound">snare</span>
+    </div>
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <span class="sound">tom</span>
+    </div>
+    <div data-key="76" class="key">
+      <kbd>L</kbd>
+      <span class="sound">tink</span>
+    </div>
+  </div>
+
+	<!--	The data attribute is not a standard; they came about when people were making up their own attributes.  
+			If you want to make up something like a key you have to put it behind 'data-'
+		
+			"The data-* attributes gives us the ability to embed custom data attributes on all HTML elements."
+	-->
+  <audio data-key="65" src="sounds/clap.wav"></audio>
+  <audio data-key="83" src="sounds/hihat.wav"></audio>
+  <audio data-key="68" src="sounds/kick.wav"></audio>
+  <audio data-key="70" src="sounds/openhat.wav"></audio>
+  <audio data-key="71" src="sounds/boom.wav"></audio>
+  <audio data-key="72" src="sounds/ride.wav"></audio>
+  <audio data-key="74" src="sounds/snare.wav"></audio>
+  <audio data-key="75" src="sounds/tom.wav"></audio>
+  <audio data-key="76" src="sounds/tink.wav"></audio>
+
+<script>
+	
+	
+	/**
+	*	Play a Sound
+	*	@param {e} Keydown event
+	*/
+	function playSound(e){
+			
+		/*
+		*	document.querySelector returns a single matching component from the page.
+		*	we use the attribute selector; 'audio' is the tag name, and 'data-key' is the attribute.
+		*/
+		const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); // returns e.g. <audio data-key="65" src="sounds/clap.wav">	
+		
+		const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); // returns e.g. <div class="key" data-key="83">
+		
+		/* 
+		*	we don't want the function to run if there is no audio selector (i.e. it is null)
+		*/
+		if(!audio) return; 
+		
+		/* 
+		*	we want to effectively 'rewind' the audio so that if it is currently playing it'll start it again rather
+		*	if we didn't do this, we'd have to wait until the audio had finished playing to be able to play it again
+		*/
+		audio.currentTime = 0; 
+		
+		audio.play();
+		
+		key.classList.add('playing'); // adds class of 'playing' to the key which has visual and transform properties in the CSS
+			
+	}
+	
+	/** 
+	*	Remove transition properties
+	*	@param {e} transitioned event
+	*/
+	function removeTransition(e){
+		
+		if(e.propertyName !== 'transform') return; // skip it if it's not a transform - otherwise we'd get multiple triggers
+		
+		/*
+		* 'this' is the key (i.e. that key.AddEventListener got called against)
+		* don't forget - you can always just do console.log(this) if you're not sure what it is
+		*/
+		this.classList.remove('playing');
+	
+	}
+	
+	/*
+	*	document.querySelectorAll returns all matching component on the page (as an array).
+	*/
+	const keys = document.querySelectorAll('.key');
+	
+	window.addEventListener('keydown', playSound); // listen for the keydown event
+	
+	/*	
+	*	you have to add individual eventListeners as it's a node list, so you have to loop through each element
+	*/
+	keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+	
+	
+</script>
+
+
+</body>
+</html>
