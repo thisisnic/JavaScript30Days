@@ -34,3 +34,22 @@ Topics:
 * using || '' to append nothing rather than undefined
 * using inputs to alter properties of the page
 * using the mousemove event for smooth transitions
+
+## 4 - Array Cardio
+
+Topics:
+
+* filtering arrays using the filter method
+* using array functions ( => )
+* console.table
+* concatenating strings manually and using template strings
+* sorting arrays using the sort method
+* bubble sorts
+* the ternary operator
+* using the reduce method
+* initialising values returned from reduce
+* converting nodeLists to arrays
+* selecting from nodeLists
+* combining map and filter
+* creating arrays using the split method
+* initialising reduce when full set of keys for key/value pairs are not known
