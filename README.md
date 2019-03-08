@@ -8,7 +8,7 @@ Topics:
 
 * key events
 * audio events
-* the transition end event
+* the transitionend event
 * HTML5 custom data attributes
 * returning matching components using document.querySelector and document.querySelectorAll
 * adding classes to elements with JavaScript
@@ -53,3 +53,13 @@ Topics:
 * combining map and filter
 * creating arrays using the split method
 * initialising reduce when full set of keys for key/value pairs are not known
+
+## 5 - Flex Panel Gallery
+
+Topics: 
+
+* using the CSS Flexbox Layout module
+* font size and flex transitions
+* transforming translateY to move things on and off screen
+* applying CSS to first and last child elements
+* toggling elements in the classList
