@@ -80,6 +80,12 @@ Topics:
 * using innerHTML to assign new content
 * keyup vs. change events
 
+## 7 - Array Cardio 2
+
+* checking with some and every
+* searching with find and findIndex
+* removing/chooping with splice and slice
+
 
 
 
