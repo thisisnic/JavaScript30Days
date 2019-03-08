@@ -82,10 +82,22 @@ Topics:
 
 ## 7 - Array Cardio 2
 
+Topics: 
+
 * checking with some and every
 * searching with find and findIndex
 * removing/chooping with splice and slice
 
+## 8 - HTML5 Canvas
+
+Topics: 
+
+* drawing on the HTML5 canvas
+* HSL colours
+* varying line width
+* varying strokeStyle (colour)
+* using flags
+* mouseout event
 
 
 
