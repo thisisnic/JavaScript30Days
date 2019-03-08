@@ -63,3 +63,23 @@ Topics:
 * transforming translateY to move things on and off screen
 * applying CSS to first and last child elements
 * toggling elements in the classList
+
+## 6 - Type Ahead
+
+Topics:
+
+* Ajax
+* the Fetch API
+* promises and the 'then' method
+* extracting HTTP request responses
+* spreading data into an array
+* using the push method to append arrays
+* regex
+* using the 'replace' method
+* manually generating HTML components
+* using innerHTML to assign new content
+* keyup vs. change events
+
+
+
+
