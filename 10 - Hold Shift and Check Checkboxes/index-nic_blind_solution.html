@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hold Shift to Check Multiple Checkboxes</title>
+</head>
+<body>
+  <style>
+
+    html {
+      font-family: sans-serif;
+      background: #ffc600;
+    }
+
+    .inbox {
+      max-width: 400px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #F1F1F1;
+    }
+
+    .item:last-child {
+      border-bottom: 0;
+    }
+
+    input:checked + p {
+      background: #F9F9F9;
+      text-decoration: line-through;
+    }
+
+    input[type="checkbox"] {
+      margin: 20px;
+    }
+
+    p {
+      margin: 0;
+      padding: 20px;
+      transition: background 0.2s;
+      flex: 1;
+      font-family:'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+      border-left: 1px solid #D1E2FF;
+    }
+  </style>
+   <!--
+   The following is a common layout you would see in an email client.
+
+   When a user clicks a checkbox, holds Shift, and then clicks another checkbox a few rows down, all the checkboxes inbetween those two checkboxes should be checked.
+
+  -->
+  <div class="inbox">
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout.</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Check one item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Hold down your Shift key</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Check a lower item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Everything in between should also be set to checked</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Try to do it without any libraries</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Just regular JavaScript</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Good Luck!</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Don't forget to tweet your result!</p>
+    </div>
+  </div>
+
+<script>
+
+// get all checkboxes
+const boxes = document.querySelectorAll('input[type="checkbox"]');
+
+boxes.forEach((box, index) => 
+{
+	// give each checkbox an id based on its index
+	box.id = "checkbox_" + index;
+	
+	// add an event listener which is triggered every time the box is checked or unchecked
+	box.addEventListener('change', handleUpdate);
+});
+
+// store values of previous and currently checked boxes
+let previousBoxClicked = '';
+let currentBoxClicked = '';
+
+// when a box is checked...
+function handleUpdate(){
+
+	// update the previous and current box clicked
+	previousBoxClicked = currentBoxClicked;
+	currentBoxClicked = this.id.split("checkbox_")[1];
+
+	let index1 = 0;
+	let index2 = 0;
+	
+	// if shift is being held down and we have a last/current box clicked value...
+	if(shiftDown === true & previousBoxClicked.length > 0 & currentBoxClicked.length > 0){
+	
+		// if these are clicked in ascending numerical order, we index this way
+		if(previousBoxClicked < currentBoxClicked){
+			index1 = parseInt(previousBoxClicked);
+			index2 = parseInt(currentBoxClicked) + 1;
+			
+		// if not, we index this way
+		} else {
+			index1 = parseInt(currentBoxClicked);
+			index2 = parseInt(previousBoxClicked) + 1;
+		}
+		
+		// every box between the current one and this one should have its checked status set to true	
+		let boxesToCheck = Array.from(boxes).slice(index1, index2);
+		boxesToCheck.forEach(box => box.checked = true);
+	
+	}
+  
+}
+
+// shiftDown variable tracks status of shift key
+let shiftDown = false; 
+
+// if we press shift set shiftDown to true
+window.addEventListener('keydown', (e) => {
+	if(e.keyCode === 16){
+		shiftDown = true; 
+	}
+});
+
+// if we let go of shift set shiftDown to false
+window.addEventListener('keyup', (e) => {
+	if(e.keyCode === 16){
+		shiftDown = false; 
+	}
+});
+
+</script>
+</body>
+</html>

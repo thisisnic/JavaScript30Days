@@ -99,5 +99,23 @@ Topics:
 * using flags
 * mouseout event
 
+## 9 - Dev Tools Domination
 
+Topics: 
 
+* String interpolation in the console
+* Styled code in the console
+* Assertion and errors in the console
+* Browsing objects in the console
+* Showing objects as groups in the console
+* Timing operations in the console
+
+## 10 - Hold Shift and Check Checkboxes
+
+This exercise was slightly different in that it was the first one I completed entirely by myself before viewing the answer provided.
+
+New things learned:
+
+* click events have the property shiftKey which tells you whether the shift key was held whilst the user clicked
+* how to loop through objects to compare to the current (this) object
+* how to use flags which are negated when the start/end condition is met
