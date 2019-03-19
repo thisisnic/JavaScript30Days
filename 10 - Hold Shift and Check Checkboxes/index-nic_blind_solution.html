@@ -103,7 +103,7 @@ const boxes = document.querySelectorAll('input[type="checkbox"]');
 boxes.forEach((box, index) => 
 {
 	// give each checkbox an id based on its index
-	box.id = "checkbox_" + index;
+	box.dataset.id = index;
 	
 	// add an event listener which is triggered every time the box is checked or unchecked
 	box.addEventListener('change', handleUpdate);
@@ -118,7 +118,7 @@ function handleUpdate(){
 
 	// update the previous and current box clicked
 	previousBoxClicked = currentBoxClicked;
-	currentBoxClicked = this.id.split("checkbox_")[1];
+	currentBoxClicked = this.dataset.id;
 
 	let index1 = 0;
 	let index2 = 0;
