@@ -138,10 +138,18 @@ Topics:
 * using join to convert array to a strings
 * using includes to search within a string
 
-13 - Slide in on Scroll
+## 13 - Slide in on Scroll
 
 Topics:
 
 * debouncing eventListeners
 * using the window's height and scrollX properties
 * the scroll event
+
+## 14 - JavaScript References VS Copying
+
+Topics:
+
+* copying strings, numbers, and booleans
+* copying arrays
+* copying arrays with deeper levels of nesting
