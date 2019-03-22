@@ -119,3 +119,29 @@ New things learned:
 * click events have the property shiftKey which tells you whether the shift key was held whilst the user clicked
 * how to loop through objects to compare to the current (this) object
 * how to use flags which are negated when the start/end condition is met
+
+## 11 - Custom Video Player
+
+Topics:
+
+* calling a method defined in a variable
+* making content fullscreen
+* properties and events of the video object
+* using offsets to determine length/position
+
+## 12 - Key Sequence Detection
+
+Topics:
+
+* adding elements to an array
+* splicing the array to only keep the last N elements
+* using join to convert array to a strings
+* using includes to search within a string
+
+13 - Slide in on Scroll
+
+Topics:
+
+* debouncing eventListeners
+* using the window's height and scrollX properties
+* the scroll event
