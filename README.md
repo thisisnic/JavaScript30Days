@@ -153,3 +153,16 @@ Topics:
 * copying strings, numbers, and booleans
 * copying arrays
 * copying arrays with deeper levels of nesting
+
+## 15 - LocalStorage
+
+Topics:
+
+* preventing default behaviours
+* overriding checkboxes with CSS
+* selecting by name as well as class
+* saving to, adn restoring from, local storage
+* retrieving values of selected items
+* using functions with default and non-default parameters
+* event delegation when we have reactive and unpredictable components
+* converting strings to and from JSON
